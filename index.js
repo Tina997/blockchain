@@ -100,12 +100,14 @@ const syncWithRootState = ()=>{
     });
 };
 
-let PEER_PORT;
+/*let PEER_PORT;
 if(process.env.GENERATE_PEER_PORT === 'true'){
     PEER_PORT = DEFAULT_PORT + Math.ceil(Math.random()*1000);
 }
 
-const PORT = PEER_PORT || DEFAULT_PORT;
+const PORT = PEER_PORT || DEFAULT_PORT;*/
+const PORT = process.env.PORT || process.env.DEFAULT_PORT;
+
 app.listen(PORT, () => {
     console.log(`Listening at localhost:${PORT}`);
 
