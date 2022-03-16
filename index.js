@@ -1,11 +1,11 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
-const Blockchain = require('./blockchain');
-const PubSub = require('./app/pubsub');
-const TransactionPool = require('./wallet/transaction-pool');
-const Wallet = require('./wallet');
-const TransactionMiner = require('./app/transaction-miner');
+const Blockchain = require('./server/blockchain');
+const PubSub = require('./server/app/pubsub');
+const TransactionPool = require('./server/wallet/transaction-pool');
+const Wallet = require('./server/wallet');
+const TransactionMiner = require('./server/app/transaction-miner');
 const res = require('express/lib/response');
 
 const app = express();
