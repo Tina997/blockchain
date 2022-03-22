@@ -1,6 +1,5 @@
 const redis = require('../../node_modules/redis');
 const { parse } = require('request/lib/cookies');
-//const REDIS_URL = process.env.REDIS_URL || process.env.REDIS_LOCAL_URL
 
 const CHANNELS = {
     TEST:'TEST',
