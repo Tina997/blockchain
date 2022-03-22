@@ -33,6 +33,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.3",
+    "chalk": "^5.0.1",
     "debug": "^4.3.4",
     "elliptic": "^6.4.1",
     "express": "^4.16.3",
