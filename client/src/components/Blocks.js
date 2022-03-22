@@ -5,7 +5,7 @@ class Blocks extends Component{
     state = {blocks: []};
 
     componentDidMount(){
-        fetch('http://localhost:3000/api/blocks')
+        fetch('https://young-basin-12073.herokuapp.com/api/blocks')
         .then(response => response.json())
         .then(json => this.setState({blocks: json}));
     }
