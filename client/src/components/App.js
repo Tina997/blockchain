@@ -6,7 +6,7 @@ class App extends Component{
     state = {walletInfo: {}}
 
     componentDidMount(){
-        fetch('https://young-basin-12073.herokuapp.com/api/wallet-info')
+        fetch(`${document.location.origin}/api/wallet-info`)
         .then(response=>response.json())
         .then(json => this.setState({walletInfo: json}));
     }
