@@ -13,8 +13,8 @@ class PubSub{
         this.blockchain = blockchain;
         this.transactionPool = this.transactionPool;
 
-        this.publisher = redis.createClient(REDIS_URL, {tls: { rejectUnauthorized: false }});
-        this.subscriber = redis.createClient(REDIS_URL, {tls: { rejectUnauthorized: true }});
+        this.publisher = redis.createClient(REDIS_URL);
+        this.subscriber = redis.createClient(REDIS_URL);
 
         this.subscribeToChannels();
 
