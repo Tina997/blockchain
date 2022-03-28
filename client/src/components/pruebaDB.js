@@ -13,11 +13,9 @@ class pruebaDB extends Component{
         results = { 'results': (result) ? result.rows : null};
 
         render(){
-            this.results.array.forEach(element => {
             return(<div>
                 Aceituna
             </div>)
-            });
 
         }
 }
