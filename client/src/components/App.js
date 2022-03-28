@@ -1,5 +1,6 @@
 import React, {Component } from 'react';
 import Blocks from './Blocks';
+import pruebaDB from './pruebaDB';
 import logo from '../assets/Logo.png';
 
 class App extends Component{
