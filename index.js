@@ -98,16 +98,16 @@ app.get('/api/wallet-info', (req,res) =>{
 });
 
 app.get('/db', async (req, res) => {
-    try {
+    /*try {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM test_table');
-      const results = { 'results': (result) ? result.rows : null};
-      res.render('/db', results );
-      client.release();
+      const results = { 'results': (result) ? result.rows : null};*/
+      res.render('db');
+      /*client.release();
     } catch (err) {
       console.error(err);
       res.send("Error " + err);
-    }
+    }*/
   })
 
 app.get('*', (req, res) =>{
