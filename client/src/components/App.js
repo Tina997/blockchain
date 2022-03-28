@@ -21,6 +21,7 @@ class App extends Component{
                <div>Welcome to the blockchain</div> 
                 <br/>
                 <Blocks />
+                <pruebaDB />
             </div>
         );
     }

@@ -9,14 +9,6 @@ const Wallet = require('./server/wallet');
 const TransactionMiner = require('./server/app/transaction-miner');
 const res = require('express/lib/response');
 
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
-
 const isDevelopment = process.env.ENV === 'development';
 
 const REDIS_URL = isDevelopment ?
@@ -97,18 +89,6 @@ app.get('/api/wallet-info', (req,res) =>{
     });
 });
 
-app.get('/db', async (req, res) => {
-    /*try {
-      const client = await pool.connect();
-      const result = await client.query('SELECT * FROM test_table');
-      const results = { 'results': (result) ? result.rows : null};*/
-      res.sendFile(path.join(__dirname, 'client/src/db.html'));
-      /*client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }*/
-  })
 
 app.get('*', (req, res) =>{
     res.sendFile(path.join(__dirname, 'client/dist/index.html'));

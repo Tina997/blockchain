@@ -23356,7 +23356,7 @@ var App = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/_react.default.createElement("img", {
         className: "logo",
         src: _Logo.default
-      }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, "Welcome to the blockchain"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Blocks.default, null));
+      }), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", null, "Welcome to the blockchain"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Blocks.default, null), /*#__PURE__*/_react.default.createElement("pruebaDB", null));
     }
   }]);
 
