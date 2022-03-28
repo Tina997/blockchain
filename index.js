@@ -9,13 +9,21 @@ const Wallet = require('./server/wallet');
 const TransactionMiner = require('./server/app/transaction-miner');
 const res = require('express/lib/response');
 
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
 const isDevelopment = process.env.ENV === 'development';
 
 const REDIS_URL = isDevelopment ?
 'redis://127.0.0.1:6379': 
 'redis://:pa8f1306ae9ab8fe1e72e11104b0579279f1dc0f810f0ea0bd82ffb46b9f87698@ec2-34-195-207-177.compute-1.amazonaws.com:11909'
 const DEFAULT_PORT = 3000;
-const ROOT_NODE_ADDRESS = 'https://young-basin-12073.herokuapp.com';
+const ROOT_NODE_ADDRESS = `${document.location.origin}`;
 
 const app = express();
 const blockchain = new Blockchain();
@@ -88,6 +96,19 @@ app.get('/api/wallet-info', (req,res) =>{
         balance: Wallet.calculateBalance({chain: blockchain.chain, address: wallet.publicKey})
     });
 });
+
+app.get('/db', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      const result = await client.query('SELECT * FROM test_table');
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/db', results );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
 
 app.get('*', (req, res) =>{
     res.sendFile(path.join(__dirname, 'client/dist/index.html'));
