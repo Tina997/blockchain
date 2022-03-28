@@ -20,3 +20,8 @@ const pool = new Pool({
       res.send("Error " + err);
 }
 
+render(
+    <App />, 
+    document.getElementById('root')
+    );
+
