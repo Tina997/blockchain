@@ -9,7 +9,7 @@ const pool = new Pool({
 
 class pruebaDB extends Component{
         client = await pool.connect();
-        result = await client.query('SELECT * FROM tabla_mejoras');
+        result = await client.query('SELECT * FROM test_table');
         results = { 'results': (result) ? result.rows : null};
 
         render(){
