@@ -32,8 +32,6 @@ const wallet = new Wallet();
 const pubsub = new PubSub({blockchain, transactionPool, redisUrl: REDIS_URL});
 const transactionMiner = new TransactionMiner({blockchain, transactionPool, wallet, pubsub});
 
-var router = express.Router();
-
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
@@ -104,7 +102,7 @@ app.get('/db', async (req, res) => {
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM test_table');
       const results = { 'results': (result) ? result.rows : null};*/
-      res.render('db', {});
+      res.sendFile(path.join(__dirname, 'client/src/db.html'));
       /*client.release();
     } catch (err) {
       console.error(err);
@@ -149,5 +147,3 @@ app.listen(PORT, () => {
         syncWithRootState();
     }
 });
-
-module.exports = router;
