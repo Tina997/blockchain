@@ -23259,7 +23259,7 @@ var Blocks = /*#__PURE__*/function (_Component) {
       console.log('this.state', this.state);
       return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Blocks"), this.state.blocks.map(function (block) {
         return /*#__PURE__*/_react.default.createElement(_Block.default, {
-          key: block.id,
+          key: block.hash,
           block: block
         });
       }));
