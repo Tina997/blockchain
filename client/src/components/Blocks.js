@@ -5,7 +5,7 @@ class Blocks extends Component{
     state = {blocks: []};
 
     componentDidMount(){
-        fetch(`${document.location.origin}/api/blocks`)
+        fetch(`${document.location.origin}/list`)
         .then(response => response.json())
         .then(json => this.setState({blocks: json}));
     }
@@ -18,7 +18,7 @@ class Blocks extends Component{
                 {
                     this.state.blocks.map(block =>{
                         return(
-                            <Block key={block.hash} block ={block}/>
+                            <Block key={block.id} block ={block}/>
                         )
                     })
                 }

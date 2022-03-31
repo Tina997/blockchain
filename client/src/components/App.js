@@ -1,6 +1,5 @@
 import React, {Component } from 'react';
 import Blocks from './Blocks';
-import pruebaDB from './pruebaDB';
 import logo from '../assets/Logo.png';
 
 class App extends Component{
@@ -22,7 +21,6 @@ class App extends Component{
                <div>Welcome to the blockchain</div> 
                 <br/>
                 <Blocks />
-                <pruebaDB />
             </div>
         );
     }
