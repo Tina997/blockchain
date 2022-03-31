@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 class Block extends Component{
     render(){
-        /*const {timestamp, hash, data} = this.props.block;
+        const {timestamp, hash, data} = this.props.block;
 
         return(
             <div className="Block">
@@ -11,15 +11,15 @@ class Block extends Component{
                 <div>Array:</div>
 
             </div>
-        )*/
+        )
 
-        const {id, name} = this.props.block;
+        /*const {id, name} = this.props.block;
         return(
             <div className="Block">
                 <div>Id: {id}</div>
                 <div>Name: {name}</div>
             </div>
-        )
+        )*/
     }
 };
 

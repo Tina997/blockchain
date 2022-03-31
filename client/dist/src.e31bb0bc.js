@@ -23158,21 +23158,20 @@ var Block = /*#__PURE__*/function (_Component) {
   _createClass(Block, [{
     key: "render",
     value: function render() {
-      /*const {timestamp, hash, data} = this.props.block;
-        return(
-          <div className="Block">
-              <div>Hash: {hash}</div>
-              <div>Timestamp: {new Date(timestamp).toLocaleString()}</div>
-              <div>Data: {data}</div>
-              <div>Array:</div>
-            </div>
-      )*/
       var _this$props$block = this.props.block,
-          id = _this$props$block.id,
-          name = _this$props$block.name;
+          timestamp = _this$props$block.timestamp,
+          hash = _this$props$block.hash,
+          data = _this$props$block.data;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "Block"
-      }, /*#__PURE__*/_react.default.createElement("div", null, "Id: ", id), /*#__PURE__*/_react.default.createElement("div", null, "Name: ", name));
+      }, /*#__PURE__*/_react.default.createElement("div", null, "Hash: ", hash), /*#__PURE__*/_react.default.createElement("div", null, "Timestamp: ", new Date(timestamp).toLocaleString()), /*#__PURE__*/_react.default.createElement("div", null, "Data: ", data), /*#__PURE__*/_react.default.createElement("div", null, "Array:"));
+      /*const {id, name} = this.props.block;
+      return(
+          <div className="Block">
+              <div>Id: {id}</div>
+              <div>Name: {name}</div>
+          </div>
+      )*/
     }
   }]);
 
@@ -23246,7 +23245,7 @@ var Blocks = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("".concat(document.location.origin, "/list")).then(function (response) {
+      fetch("".concat(document.location.origin, "/blocks")).then(function (response) {
         return response.json();
       }).then(function (json) {
         return _this2.setState({
@@ -23340,7 +23339,7 @@ var App = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("".concat(document.location.origin, "/list")).then(function (response) {
+      fetch("".concat(document.location.origin, "/blocks")).then(function (response) {
         return response.json();
       }).then(function (json) {
         return _this2.setState({
@@ -23482,7 +23481,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65510" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49463" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
