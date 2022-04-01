@@ -23245,7 +23245,7 @@ var Blocks = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("".concat(document.location.origin, "/list")).then(function (response) {
+      fetch("".concat(document.location.origin, "/table")).then(function (response) {
         return response.json();
       }).then(function (json) {
         return _this2.setState({
@@ -23339,7 +23339,7 @@ var App = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("".concat(document.location.origin, "/list")).then(function (response) {
+      fetch("".concat(document.location.origin, "/table")).then(function (response) {
         return response.json();
       }).then(function (json) {
         return _this2.setState({

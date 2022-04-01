@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
-    const template = await pool.query('SELECT * FROM test_table');
+    const template = await pool.query('SELECT * FROM block_table');
     res.json(template.rows);
 })
 
