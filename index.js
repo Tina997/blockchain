@@ -46,11 +46,17 @@ app.get('/api/blocks', (req, res) =>{
 app.post('/api/mine', (req,res) => {
     const{data} = req.body;
 
-    blockchain.addBlock({data});
+    const lastHash = await pool.query('SELECT hash FROM block_table ORDER BY timestamp DESC LIMIT 1');
+
+    const timestamp = Date.now();
+
+    pool.query('INSERT into block_table values (timestamp, lastHash, data, 3, 0');
+
+    //blockchain.addBlock({data});
 
     pubsub.broadcastChain();
 
-    res.redirect('/api/blocks');
+    //res.redirect('/api/blocks');
 });
 
 app.post('/api/transact', (req, res) =>{
