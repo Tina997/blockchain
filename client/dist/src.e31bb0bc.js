@@ -23245,7 +23245,7 @@ var Blocks = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("".concat(document.location.origin, "/blocks")).then(function (response) {
+      fetch("".concat(document.location.origin, "/list")).then(function (response) {
         return response.json();
       }).then(function (json) {
         return _this2.setState({
@@ -23339,7 +23339,7 @@ var App = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch("".concat(document.location.origin, "/blocks")).then(function (response) {
+      fetch("".concat(document.location.origin, "/list")).then(function (response) {
         return response.json();
       }).then(function (json) {
         return _this2.setState({
@@ -23481,7 +23481,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49494" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58793" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
