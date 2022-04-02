@@ -50,13 +50,13 @@ app.post('/api/mine', (req,res) => {
 
     //console.log(lastHash);
 
-    const timestamp = Date.now();
+    //const timestamp = Date.now();
 
-    pool.query('INSERT into block_table values (', timestamp, ', ', lastHash, ', ', data, ', 3, 0)');
+    //pool.query('INSERT into block_table values (', timestamp, ', ', lastHash, ', ', data, ', 3, 0)');
 
-    blockchain.addBlock({data});
+    //blockchain.addBlock({data});
 
-    pubsub.broadcastChain();
+    //pubsub.broadcastChain();
 
     //res.redirect('/api/blocks');
     res.redirect('/table');
