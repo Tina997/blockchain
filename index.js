@@ -37,8 +37,7 @@ app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
     const template = DatabaseModel.obtainAll();
-    console.log((await template).rows);
-    res.json(template.rows);
+    res.json((await template).rows);
 })
 
 app.get('/api/blocks', (req, res) =>{
