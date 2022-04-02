@@ -52,7 +52,7 @@ app.post('/api/mine', (req,res) => {
 
     const timestamp = Date.now();
 
-    await pool.query('INSERT into block_table values (timestamp, lastHash, data, 3, 0)');
+    //await pool.query('INSERT into block_table values (timestamp, lastHash, data, 3, 0)');
 
     //blockchain.addBlock({data});
 
