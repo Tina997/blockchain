@@ -24,20 +24,20 @@ const transactionPool = new TransactionPool();
 const wallet = new Wallet();
 const pubsub = new PubSub({blockchain, transactionPool, redisUrl: REDIS_URL});
 const transactionMiner = new TransactionMiner({blockchain, transactionPool, wallet, pubsub});
-const { Pool } = require('pg');
+/*const { Pool } = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
     }
-});
+});*/
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
     const template = DatabaseModel.obtainAll();
-    res.json(template.rows);
+    res.json(template);
 })
 
 app.get('/api/blocks', (req, res) =>{
