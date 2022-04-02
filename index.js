@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
     const template = DatabaseModel.obtainAll();
-    console.log(template);
+    console.log((await template).rows);
     res.json(template.rows);
 })
 
@@ -48,7 +48,7 @@ app.get('/api/blocks', (req, res) =>{
 app.post('/api/mine', (req,res) => {
     const{data} = req.body;
 
-    const lastHash = pool.query('SELECT hash FROM block_table ORDER BY timestamp DESC LIMIT 1');
+    //const lastHash = pool.query('SELECT hash FROM block_table ORDER BY timestamp DESC LIMIT 1');
 
     //console.log(lastHash);
 

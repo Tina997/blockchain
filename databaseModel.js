@@ -11,6 +11,7 @@ module.exports = {
     },
     async obtainAll(){
         const results = await connection.query("SELECT * FROM block_table");
+        console.log(results.rowCount);
         return results;
     }
 }
