@@ -48,11 +48,11 @@ app.post('/api/mine', (req,res) => {
 
     const lastHash = pool.query('SELECT hash FROM block_table ORDER BY timestamp DESC LIMIT 1');
 
-    console.log(lastHash);
+    //console.log(lastHash);
 
-    //const timestamp = Date.now();
+    const timestamp = Date.now();
 
-    //await pool.query('INSERT into block_table values ('timestamp', 'lastHash', 'data', 3, 0)');
+    pool.query('INSERT into block_table values (', timestamp, ', ', lastHash, ', ', data, ', 3, 0)');
 
     blockchain.addBlock({data});
 
