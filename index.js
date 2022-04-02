@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
 const path = require('path');
+const DatabaseModel = require('./databaseModel');
 const Blockchain = require('./server/blockchain');
 const PubSub = require('./server/app/pubsub');
 const TransactionPool = require('./server/wallet/transaction-pool');
@@ -35,7 +36,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
-    const template = await pool.query('SELECT * FROM block_table');
+    const template = DatabaseModel.obtainAll();
     res.json(template.rows);
 })
 
