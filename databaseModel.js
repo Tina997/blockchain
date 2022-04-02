@@ -11,6 +11,6 @@ module.exports = {
     },
     async obtainAll(){
         const results = await connection.query("SELECT * FROM block_table");
-        return results.rows;
+        return results;
     }
 }
