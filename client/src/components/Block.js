@@ -8,8 +8,6 @@ class Block extends Component{
                 <div>Hash: {hash}</div>
                 <div>Timestamp: {new Date(timestamp).toLocaleString()}</div>
                 <div>Data: {data}</div>
-                <div>Array:</div>
-
             </div>
         )
 

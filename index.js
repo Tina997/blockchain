@@ -9,6 +9,7 @@ const TransactionPool = require('./server/wallet/transaction-pool');
 const Wallet = require('./server/wallet');
 const TransactionMiner = require('./server/app/transaction-miner');
 const res = require('express/lib/response');
+const databaseModel = require('./databaseModel');
 
 const isDevelopment = process.env.ENV === 'development';
 
@@ -47,20 +48,24 @@ app.get('/api/blocks', (req, res) =>{
 app.post('/api/mine', (req,res) => {
     const{data} = req.body;
 
-    //const lastHash = pool.query('SELECT hash FROM block_table ORDER BY timestamp DESC LIMIT 1');
-
-    //console.log(lastHash);
-
-    //const timestamp = Date.now();
-
-    //pool.query('INSERT into block_table values (', timestamp, ', ', lastHash, ', ', data, ', 3, 0)');
-
+    if(!data){
+        return res.status(500).send("Campo data inválido");
+    }
+    
+    databaseModel
+        .insert(data)
+        .then(timestampNuevo=>{
+            res.redirect('/table');
+        })
+        .catch(err =>{
+            return res.status(500).send("Error insertando producto");
+        });
     //blockchain.addBlock({data});
 
     //pubsub.broadcastChain();
 
     //res.redirect('/api/blocks');
-    res.redirect('/table');
+    //res.redirect('/table');
 });
 
 app.post('/api/transact', (req, res) =>{

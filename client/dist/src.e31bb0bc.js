@@ -23164,7 +23164,7 @@ var Block = /*#__PURE__*/function (_Component) {
           data = _this$props$block.data;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "Block"
-      }, /*#__PURE__*/_react.default.createElement("div", null, "Hash: ", hash), /*#__PURE__*/_react.default.createElement("div", null, "Timestamp: ", new Date(timestamp).toLocaleString()), /*#__PURE__*/_react.default.createElement("div", null, "Data: ", data), /*#__PURE__*/_react.default.createElement("div", null, "Array:"));
+      }, /*#__PURE__*/_react.default.createElement("div", null, "Hash: ", hash), /*#__PURE__*/_react.default.createElement("div", null, "Timestamp: ", new Date(timestamp).toLocaleString()), /*#__PURE__*/_react.default.createElement("div", null, "Data: ", data));
       /*const {id, name} = this.props.block;
       return(
           <div className="Block">
@@ -23481,7 +23481,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58793" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60460" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
