@@ -52,7 +52,7 @@ app.post('/api/mine', (req,res) => {
         return res.status(500).send("Campo data inválido");
     }
     
-    databaseModel
+    DatabaseModel
         .insert(data)
         .then(timestampNuevo=>{
             res.redirect('/table');
