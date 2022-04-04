@@ -5,7 +5,8 @@ const {cryptoHash} = require("./server/util");
 module.exports = {
     async insert(data){
         let lastHash = obtainLastHash();
-        let timestamp = Date.now();
+        //let timestamp = Date.now();
+        let timestamp = '2022/04/04 19:19:00';
         let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
         let hash = cryptoHash(timestamp, lastHash, data, difficulty);
         let results = await connection.query(`insert into block_table
