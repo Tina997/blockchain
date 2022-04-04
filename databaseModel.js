@@ -13,11 +13,11 @@ module.exports = {
         console.log('difficulty', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty);
         console.log('hash', hash);
-        /*let results = await connection.query(`insert into block_table
+        let results = await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
         values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
 
-        return results;*/
+        return results;
 
     },
     async obtainLastHash(){
