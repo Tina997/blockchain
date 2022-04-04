@@ -54,7 +54,7 @@ app.post('/api/mine', (req,res) => {
     
     DatabaseModel
         .insert(data)
-        .then(timestampNuevo=>{
+        .then(()=>{
             res.redirect('/table');
         })
         .catch(err =>{
