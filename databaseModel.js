@@ -1,5 +1,6 @@
 const connection = require("./connection");
 const Block = require("./server/blockchain/block");
+const {MINE_RATE} = require("./config");
 const {cryptoHash} = require("./server/util");
 
 module.exports = {
@@ -11,8 +12,7 @@ module.exports = {
         let timestamp = new Date().toLocaleString();
         //console.log('timestamp: ', timestamp);
         //let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
-        let block = new Block(lastBlock);
-        let difficulty = Block.adjustDifficulty(block, timestamp);
+        let difficulty = (timestamp - lastBlock.rows[0].timestamp) > MINE_RATE ? lastBlock.rows[0].difficulty + 1: lastBlock.rows[0].difficulty - 1;
         console.log('difficulty: ', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
         //console.log('hash: ', hash);
