@@ -8,10 +8,9 @@ module.exports = {
         let lastHash = lastBlock.rows[0].hash;
         //let lastHash = this.obtainLastHash();
         console.log('lastHash: ', lastHash);
-        let timestamp = Date.now();
-        console.log('timestamp: ', timestamp.toLocaleDateString());
-        /*const timestamp = '2022/04/04 19:19:00';
-        console.log('timestamp: ', timestamp);*/
+        const dummytimestamp = '2022/04/04 19:19:00';
+        let timestamp = new Date().getTime().toString();
+        console.log('timestamp: ', timestamp);
         //let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
         let difficulty = 5;
         console.log('difficulty: ', difficulty);
