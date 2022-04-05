@@ -18,17 +18,19 @@ module.exports = {
         console.log('difficulty: ', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
         console.log('hash: ', hash);
-        await connection.query(`insert into block_table
+        /*await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
-        values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
+        values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);*/
 
         /*await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
         values ('2022/02/20 8:20:00.59', 'hash-one', '----', 1, 'dummy')`);*/
 
-        /*await connection.query(`insert into block_table
+        result = await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
-        values (`+timestamp+`, `+ lastHash+`, `+ hash+`, `+ difficulty+ `, `+ data`)`);*/
+        values (`+timestamp+`, `+ lastHash+`, `+ hash+`, `+ difficulty+ `, `+ data`)`);
+        
+        return result;
     },
     async obtainLastHash(){
         console.log("Hola");
