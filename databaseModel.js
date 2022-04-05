@@ -11,10 +11,7 @@ module.exports = {
         let today = new Date();
         let timestamp = today.toLocaleString();
         let difficulty = (today.valueOf() - lastDate.valueOf()) > MINE_RATE ? lastBlock.rows[0].difficulty - 1: lastBlock.rows[0].difficulty + 1;
-        //let difficulty = 5;
-        console.log('difficulty: ', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
-        //console.log('hash: ', hash);
         result = await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
         values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
