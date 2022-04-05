@@ -5,7 +5,9 @@ const {cryptoHash} = require("./server/util");
 module.exports = {
     async insert(data){
         console.log("Estoy mas aquí");
-        let lastHash = this.obtainLastHash();
+        let lastBlock = await connection.query("select * from block_table order by timestamp desc limit 1");
+        let lastHash = lastBlock.rows[0].hash;
+        //let lastHash = this.obtainLastHash();
         console.log('lastHash: ', lastHash);
         /*let timestamp = Date.now();
         console.log('timestamp: ', timestamp);*/
@@ -28,7 +30,7 @@ module.exports = {
     },
     async obtainLastHash(){
         console.log("Hola");
-        const result = await connection.query("select hash from block_table order by timestamp desc limit 1");
+        const result = await connection.query("select * from block_table order by timestamp desc limit 1");
         console.log(result.rows);
         return result.rows.hash;
     },
