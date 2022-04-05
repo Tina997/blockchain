@@ -30,7 +30,7 @@ module.exports = {
         console.log("Hola");
         const result = await connection.query("select hash from block_table order by timestamp desc limit 1");
         console.log(result.rows);
-        return result.rows[0];
+        return result.rows.hash;
     },
     async obtainAll(){
         const results = await connection.query("SELECT * FROM block_table");
