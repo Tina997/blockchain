@@ -5,9 +5,9 @@ const {cryptoHash} = require("./server/util");
 module.exports = {
     async insert(data){
         let lastHash = obtainLastHash()+' ';
-        console.log('lasHash: ',lastHash);
+        console.log('lastHash: ', lastHash);
         let timestamp = Date.now().toLocaleString();
-        console.log('timestamp: ',timestamp);
+        console.log('timestamp: ', timestamp);
         //const timestamp = '2022/04/04 19:19:00';
         let difficulty = Integer(Block.adjustDifficulty({originalBlock: lastBlock, timestamp}));
         console.log('difficulty: ', difficulty);

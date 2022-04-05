@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
     const template = DatabaseModel.obtainAll();
-    console.log(Date.now().toLocaleString());
+    console.log(Date.now());
     res.json((await template).rows);
 })
 
