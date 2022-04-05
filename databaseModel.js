@@ -4,7 +4,7 @@ const {cryptoHash} = require("./server/util");
 
 module.exports = {
     async insert(data){
-        let lastHash = obtainLastHash()+' ';
+        /*let lastHash = obtainLastHash()+' ';
         console.log('lastHash: ', lastHash);
         let timestamp = Date.now();
         console.log('timestamp: ', timestamp);
