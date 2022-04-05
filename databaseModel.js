@@ -13,7 +13,8 @@ module.exports = {
         console.log('timestamp: ', timestamp);
        /* const timestamp = '2022/04/04 19:19:00';
         console.log('timestamp: ', timestamp);*/
-        let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
+        //let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
+        let difficulty = 5;
         console.log('difficulty: ', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
         console.log('hash: ', hash);
