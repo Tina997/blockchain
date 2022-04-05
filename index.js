@@ -54,7 +54,7 @@ app.post('/api/mine', (req,res) => {
     if(!data){
         return res.status(500).send("Campo data inválido");
     }
-    let lastHash = obtainLastHash()+' ';
+    let lastHash = DatabaseModel.obtainLastHash()+' ';
     console.log('lasHash: ',lastHash);
     let timestamp = Date.now().toLocaleString();
     console.log('timestamp: ',timestamp);
