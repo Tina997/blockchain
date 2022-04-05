@@ -27,7 +27,9 @@ module.exports = {
         values (`+timestamp+`, `+ lastHash+`, `+ hash+`, `+ difficulty+ `, `+ data`)`);*/
     },
     async obtainLastHash(){
+        console.log("Hola");
         const result = await connection.query("select hash from block_table order by timestamp desc limit 1");
+        console.log(result.rows);
         return result.rows[0];
     },
     async obtainAll(){
