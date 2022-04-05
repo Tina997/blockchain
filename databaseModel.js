@@ -9,7 +9,7 @@ module.exports = {
         let lastHash = lastBlock.rows[0].hash;
         //let lastHash = this.obtainLastHash();
         console.log('lastHash: ', lastHash);
-        let timestamp = Date.now();
+        let timestamp = Date.now().toLocaleString();
         console.log('timestamp: ', timestamp);
        /* const timestamp = '2022/04/04 19:19:00';
         console.log('timestamp: ', timestamp);*/
@@ -20,7 +20,7 @@ module.exports = {
         console.log('hash: ', hash);
         /*await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
-        values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);*/
+        values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
 
         /*await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
