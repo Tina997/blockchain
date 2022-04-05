@@ -9,7 +9,7 @@ module.exports = {
         //let lastHash = this.obtainLastHash();
         console.log('lastHash: ', lastHash);
         let timestamp = Date.now();
-        console.log('timestamp: ', timestamp);
+        console.log('timestamp: ', timestamp.toLocaleDateString());
         /*const timestamp = '2022/04/04 19:19:00';
         console.log('timestamp: ', timestamp);*/
         //let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
