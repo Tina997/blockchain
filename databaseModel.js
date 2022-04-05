@@ -10,7 +10,8 @@ module.exports = {
         let lastDate = new Date(lastBlock.rows[0].timestamp);
         let today = new Date();
         let timestamp = today.toLocaleString();
-        let difficulty = (today.valueOf() - lastDate.valueOf()) > MINE_RATE ? lastBlock.rows[0].difficulty - 1: lastBlock.rows[0].difficulty + 1;
+        //let difficulty = (today.valueOf() - lastDate.valueOf()) > MINE_RATE ? lastBlock.rows[0].difficulty - 1: lastBlock.rows[0].difficulty + 1;
+        let difficulty = 5;
         console.log('difficulty: ', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
         //console.log('hash: ', hash);
