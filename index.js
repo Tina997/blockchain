@@ -11,6 +11,9 @@ const TransactionMiner = require('./server/app/transaction-miner');
 const res = require('express/lib/response');
 const databaseModel = require('./databaseModel');
 
+const Block = require("./server/blockchain/block");
+const {cryptoHash} = require("./server/util");
+
 const isDevelopment = process.env.ENV === 'development';
 
 const REDIS_URL = isDevelopment ?
@@ -51,7 +54,14 @@ app.post('/api/mine', (req,res) => {
     if(!data){
         return res.status(500).send("Campo data inválido");
     }
-    
+    let lastHash = obtainLastHash()+' ';
+    console.log('lasHash: ',lastHash);
+    let timestamp = Date.now().toLocaleString();
+    console.log('timestamp: ',timestamp);
+    let difficulty = Integer(Block.adjustDifficulty({originalBlock: lastBlock, timestamp}));
+    console.log('difficulty: ', difficulty);
+    let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
+    console.log('hash: ', hash);
     DatabaseModel
         .insert(data)
         .then(()=>{
