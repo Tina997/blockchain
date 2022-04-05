@@ -10,9 +10,8 @@ module.exports = {
         console.log('lastHash: ', lastHash);
         const dummytimestamp = '2022/04/04 19:19:00';
         const date = new Date();
-        let mes = date.getMonth()+1
-        //let timestamp = date.getFullYear()+'/' + mes +'/'+date.getDate() + ' ' + date.getHours()+ ':'+ date.getMinutes()+':'+ date.getSeconds();
-        let timestamp = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+        //let timestamp = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+        let timestamp = new Date().toLocaleString();
         console.log('timestamp: ', timestamp);
         //let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
         let difficulty = 5;
