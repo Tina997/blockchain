@@ -28,8 +28,8 @@ module.exports = {
 
         result = await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
-        values (`+timestamp+`, `+ lastHash+`, `+ hash+`, `+ difficulty+ `, `+ data`)`);
-        
+        values (`+timestamp+`, `+ lastHash+`, `+ hash+`, `+ difficulty+ `, `+ data+`)`);
+
         return result;
     },
     async obtainLastHash(){
