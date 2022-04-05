@@ -7,14 +7,15 @@ module.exports = {
         let lastBlock = await connection.query("select * from block_table order by timestamp desc limit 1");
         let lastHash = lastBlock.rows[0].hash;
         //let lastHash = this.obtainLastHash();
-        console.log('lastHash: ', lastHash);
+        //console.log('lastHash: ', lastHash);
         let timestamp = new Date().toLocaleString();
-        console.log('timestamp: ', timestamp);
+        //console.log('timestamp: ', timestamp);
         //let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
-        let difficulty = 5;
+        let block = new Block(lastBlock);
+        let difficulty = Block.adjustDifficulty(block, timestamp);
         console.log('difficulty: ', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
-        console.log('hash: ', hash);
+        //console.log('hash: ', hash);
         result = await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
         values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
