@@ -6,7 +6,7 @@ module.exports = {
     async insert(data){
         console.log("Estoy mas aquí");
         let lastHash = this.obtainLastHash();
-        //console.log('lastHash: ', lastHash);
+        console.log('lastHash: ', lastHash);
         /*let timestamp = Date.now();
         console.log('timestamp: ', timestamp);*/
         const timestamp = '2022/04/04 19:19:00';
