@@ -9,10 +9,6 @@ const TransactionPool = require('./server/wallet/transaction-pool');
 const Wallet = require('./server/wallet');
 const TransactionMiner = require('./server/app/transaction-miner');
 const res = require('express/lib/response');
-const databaseModel = require('./databaseModel');
-
-const Block = require("./server/blockchain/block");
-const {cryptoHash} = require("./server/util");
 
 const isDevelopment = process.env.ENV === 'development';
 
@@ -41,6 +37,7 @@ app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
     const template = DatabaseModel.obtainAll();
+    console.log(Date.now());
     res.json((await template).rows);
 })
 
@@ -54,14 +51,6 @@ app.post('/api/mine', (req,res) => {
     if(!data){
         return res.status(500).send("Campo data inválido");
     }
-    let lastHash = DatabaseModel.obtainLastHash()+' ';
-    console.log('lasHash: ',lastHash);
-    let timestamp = Date.now().toLocaleString();
-    console.log('timestamp: ',timestamp);
-    let difficulty = Integer(Block.adjustDifficulty({originalBlock: lastBlock, timestamp}));
-    console.log('difficulty: ', difficulty);
-    let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
-    console.log('hash: ', hash);
     DatabaseModel
         .insert(data)
         .then(()=>{
