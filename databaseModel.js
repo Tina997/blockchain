@@ -6,9 +6,9 @@ module.exports = {
     async insert(data){
         let lastHash = obtainLastHash()+' ';
         console.log('lasHash: ',lastHash);
-        let timestamp = Date.now().toLocaleString()+ ' ';
-        console.log('timestamp: ',timestamp);
-        //const timestamp = '2022/04/04 19:19:00';
+        //let timestamp = Date.now().toLocaleString()+ ' ';
+        //console.log('timestamp: ',timestamp);
+        const timestamp = '2022/04/04 19:19:00';
         let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
         console.log('difficulty: ', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
