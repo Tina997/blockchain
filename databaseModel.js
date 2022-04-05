@@ -6,6 +6,7 @@ const {cryptoHash} = require("./server/util");
 module.exports = {
     async insert(data){
         let lastBlock = await connection.query("select * from block_table order by timestamp desc limit 1");
+        const MINE_RATE = 1000000000000;
         let lastHash = lastBlock.rows[0].hash;
         //let lastHash = this.obtainLastHash();
         //console.log('lastHash: ', lastHash);
@@ -13,6 +14,7 @@ module.exports = {
         //console.log('timestamp: ', timestamp);
         //let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
         let difficulty = (timestamp - lastBlock.rows[0].timestamp) > MINE_RATE ? lastBlock.rows[0].difficulty + 1: lastBlock.rows[0].difficulty - 1;
+        //let difficulty = 5;
         console.log('difficulty: ', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
         //console.log('hash: ', hash);
