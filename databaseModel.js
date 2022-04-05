@@ -9,16 +9,16 @@ module.exports = {
         let lastHash = lastBlock.rows[0].hash;
         //let lastHash = this.obtainLastHash();
         console.log('lastHash: ', lastHash);
-        let timestamp = Date.now().toLocaleString();
-        console.log('timestamp: ', timestamp);
-       /* const timestamp = '2022/04/04 19:19:00';
+        /*let timestamp = Date.now().toLocaleString();
         console.log('timestamp: ', timestamp);*/
+        const timestamp = '2022/04/04 19:19:00';
+        console.log('timestamp: ', timestamp);
         //let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
         let difficulty = 5;
         console.log('difficulty: ', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
         console.log('hash: ', hash);
-        /*await connection.query(`insert into block_table
+        result = await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
         values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
 
@@ -26,9 +26,9 @@ module.exports = {
         (timestamp, lastHash, hash, difficulty, data)
         values ('2022/02/20 8:20:00.59', 'hash-one', '----', 1, 'dummy')`);*/
 
-        result = await connection.query(`insert into block_table
+        /*result = await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
-        values (`+timestamp+`, `+ lastHash+`, `+ hash+`, `+ difficulty+ `, `+ data+`)`);
+        values (`+timestamp+`, `+ lastHash+`, `+ hash+`, `+ difficulty+ `, `+ data+`)`);*/
 
         return result;
     },
