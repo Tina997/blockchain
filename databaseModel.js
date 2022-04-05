@@ -9,11 +9,11 @@ module.exports = {
         let lastHash = lastBlock.rows[0].hash;
         //let lastHash = this.obtainLastHash();
         console.log('lastHash: ', lastHash);
-        /*let timestamp = Date.now();
-        console.log('timestamp: ', timestamp);*/
-        const timestamp = '2022/04/04 19:19:00';
+        let timestamp = Date.now();
         console.log('timestamp: ', timestamp);
-        let difficulty = Integer(Block.adjustDifficulty({originalBlock: lastBlock, timestamp}));
+       /* const timestamp = '2022/04/04 19:19:00';
+        console.log('timestamp: ', timestamp);*/
+        let difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
         console.log('difficulty: ', difficulty);
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';
         console.log('hash: ', hash);
