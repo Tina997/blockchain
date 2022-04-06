@@ -1,4 +1,4 @@
-const redis = require('../../node_modules/redis');
+const redis = require('redis');
 const { parse } = require('request/lib/cookies');
 
 const CHANNELS = {
@@ -17,8 +17,8 @@ class PubSub{
 
         this.subscribeToChannels();
 
-        this.subscriber.on('message', 
-        (channel, message) => this.handleMessage(channel, message)
+        this.subscriber.on('message', (channel, message) =>
+         this.handleMessage(channel, message)
         );
 
     }

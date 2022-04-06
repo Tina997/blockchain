@@ -24,13 +24,6 @@ const transactionPool = new TransactionPool();
 const wallet = new Wallet();
 const pubsub = new PubSub({blockchain, transactionPool, redisUrl: REDIS_URL});
 const transactionMiner = new TransactionMiner({blockchain, transactionPool, wallet, pubsub});
-/*const { Pool } = require('pg');
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});*/
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
