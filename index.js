@@ -2,7 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const request = require('request');
 const path = require('path');
-const DatabaseModel = require('./blockchain');
+const DatabaseModel = require('./databaseModel');
 const Blockchain = require('./server/blockchain');
 const PubSub = require('./server/app/pubsub');
 const TransactionPool = require('./server/wallet/transaction-pool');
@@ -40,15 +40,16 @@ app.get('/api/blocks', (req, res) =>{
 app.post('/api/mine', (req,res) => {
     const{data} = req.body;
     let lastBlock = DatabaseModel.obtainLastBlock();
+    let newBlock = blockchain.addBlock(lastBlock,data);
     if(!data){
         return res.status(500).send("Campo data inválido");
     }
     DatabaseModel
-        .insert(data)
+        .insert(newBlock)
         .then(()=>{
 
             pubsub.broadcastChain();
-            blockchain.addBlock(lastBlock,data);
+            
             res.redirect('/table');
         })
         .catch(err =>{

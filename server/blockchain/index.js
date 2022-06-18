@@ -1,6 +1,6 @@
 const Block = require('./block');
 const {cryptoHash} = require('../util');
-const blockchain = require('../../blockchain');
+const blockchain = require('../../databaseModel');
 
 class Blockchain{
 
@@ -15,6 +15,7 @@ class Blockchain{
             data
         });
 
+        return newBlock;
         //this.chain.push(newBlock);
     }
 
