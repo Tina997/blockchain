@@ -54,7 +54,7 @@ app.post('/api/mine', (req,res) => {
         });
     //blockchain.addBlock({data});
 
-    //pubsub.broadcastChain();
+    pubsub.broadcastChain();
 
     //res.redirect('/api/blocks');
     //res.redirect('/table');
