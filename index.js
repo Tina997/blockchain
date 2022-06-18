@@ -45,6 +45,7 @@ app.post('/api/mine', (req,res) => {
     }
     console.log("Hola");
     let lastBlock = DatabaseModel.obtainLastBlock();
+    console.log(lastBlock);
     let newBlock = blockchain.addBlock(lastBlock, data);
     console.log("Adios");
     DatabaseModel
