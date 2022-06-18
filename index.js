@@ -39,11 +39,14 @@ app.get('/api/blocks', (req, res) =>{
 
 app.post('/api/mine', (req,res) => {
     const{data} = req.body;
-    let lastBlock = DatabaseModel.obtainLastBlock();
-    let newBlock = blockchain.addBlock(lastBlock,data);
+
     if(!data){
         return res.status(500).send("Campo data inválido");
     }
+    console.log("Hola");
+    let lastBlock = DatabaseModel.obtainLastBlock();
+    let newBlock = blockchain.addBlock(lastBlock, data);
+    console.log("Adios");
     DatabaseModel
         .insert(newBlock)
         .then(()=>{
