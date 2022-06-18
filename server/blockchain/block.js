@@ -25,6 +25,7 @@ class Block{
 
     static mineBlock({lastBlock, data}){
         console.log("Hi");
+        console.log(lastBlock);
         let lastHash = lastBlock.hash;
         let hash, timestamp, difficulty;
         console.log ("Hola");
