@@ -3,7 +3,7 @@ const Block = require("./server/blockchain/block");
 const {MINE_RATE} = require("./config");
 const {cryptoHash} = require("./server/util");
 const Blockchain = require("./server/blockchain");
-blockchain = new Blockchain();
+const blockchain = new Blockchain();
 
 module.exports = {
     async insert(data){
