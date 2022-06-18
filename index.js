@@ -43,8 +43,8 @@ app.post('/api/mine', (req,res) => {
     if(!data){
         return res.status(500).send("Campo data inválido");
     }
-    
-    DatabaseModel
+    blockchain.addBlock(data);
+    /*DatabaseModel
         .insert(data)
         .then(()=>{
 
@@ -54,7 +54,7 @@ app.post('/api/mine', (req,res) => {
         })
         .catch(err =>{
             return res.status(500).send("Error insertando producto");
-        });
+        });*/
 
     //res.redirect('/api/blocks');
     //res.redirect('/table');

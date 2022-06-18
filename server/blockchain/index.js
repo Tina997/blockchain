@@ -1,15 +1,17 @@
 const Block = require('./block');
 const {cryptoHash} = require('../util');
+const blockchain = require('../../blockchain');
 
 class Blockchain{
 
     constructor(){
-        this.chain = [Block.genesis()];
+        //this.chain = [Block.genesis()];
+        this.chain = blockchain.obtainAll();
     }
 
     addBlock({ data }){
         const newBlock = Block.mineBlock({
-            lastBlock: this.chain[this.chain.length-1],
+            lastBlock: this.chain[blockchain.obtainLastBlock.rows[0]],
             data
         });
 
