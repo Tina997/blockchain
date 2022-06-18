@@ -12,8 +12,8 @@ module.exports = {
         let timestamp = today.toLocaleString();
         let difficulty = (today.valueOf() - lastDate.valueOf()) > MINE_RATE ? lastBlock.rows[0].difficulty - 1: lastBlock.rows[0].difficulty + 1;
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';*/
-        console.log(lastBlock.rows[0]);
         let newBlock = Block.mineBlock(lastBlock.rows[0], data);
+        console.log("Hola");
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
         let hash = newBlock.hash;
