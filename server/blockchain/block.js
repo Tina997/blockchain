@@ -27,6 +27,7 @@ class Block{
         let lastHash = lastBlock.hash;
         let hash, timestamp;
         let { difficulty } = lastBlock;
+        console.log ("Hola");
         do{
             timestamp = Date.now();
             difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
