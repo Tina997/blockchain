@@ -40,6 +40,6 @@ module.exports = {
         console.log("Hola");
         const result = await connection.query("select * from block_table order by timestamp desc limit 1");
         console.log(result.rows);
-        return result.rows;
+        return result.rows[0];
     }
 }

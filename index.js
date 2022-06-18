@@ -57,7 +57,7 @@ app.post('/api/mine', (req,res) => {
         });*/
 
     //res.redirect('/api/blocks');
-    //res.redirect('/table');
+    res.redirect('/table');
 });
 
 app.post('/api/transact', (req, res) =>{
