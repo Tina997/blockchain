@@ -15,7 +15,7 @@ class Blockchain{
             data
         });
 
-        this.chain.push(newBlock);
+        //this.chain.push(newBlock);
     }
 
     replaceChain(chain, onSuccess){
