@@ -3,10 +3,11 @@ const Block = require("./server/blockchain/block");
 const {MINE_RATE} = require("./config");
 const {cryptoHash} = require("./server/util");
 const Blockchain = require("./server/blockchain");
-const blockchain = new Blockchain();
+
 
 module.exports = {
     async insert(data){
+        const blockchain = new Blockchain();
         let lastBlocks = await connection.query("select * from block_table order by timestamp desc limit 1");
         /*let lastHash = lastBlock.rows[0].hash;
         let lastDate = new Date(lastBlock.rows[0].timestamp);
