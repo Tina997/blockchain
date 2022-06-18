@@ -47,7 +47,6 @@ app.post('/api/mine', (req,res) => {
     DatabaseModel
         .insert(data)
         .then(()=>{
-            blockchain.addBlock({data});
 
             pubsub.broadcastChain();
         
