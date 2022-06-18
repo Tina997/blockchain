@@ -10,12 +10,11 @@ const pool = new Pool({
 });
 
 class Block{
-    constructor({timestamp, lastHash, hash, data, nonce, difficulty}){
+    constructor({timestamp, lastHash, hash, difficulty, data}){
         this.timestamp = timestamp;
         this.lastHash = lastHash;
         this.hash = hash;
         this.data = data;
-        this.nonce = nonce;
         this.difficulty = difficulty;
     }
 
@@ -25,18 +24,16 @@ class Block{
     }
 
     static mineBlock({lastBlock, data}){
-        const lastHash = lastBlock.hash;
+        let lastHash = lastBlock.hash;
         let hash, timestamp;
         let { difficulty } = lastBlock;
-        let nonce = 0;
         do{
-            nonce ++;
             timestamp = Date.now();
             difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
-            hash = cryptoHash(timestamp, lastHash, data, nonce, difficulty);
+            hash = cryptoHash(timestamp, lastHash, data, difficulty);
         }while(hexToBinary(hash).substring(0, difficulty)!=='0'.repeat(difficulty));
 
-        return new this({timestamp, lastHash, data, difficulty, nonce, hash});
+        return new this({timestamp, lastHash, hash, difficulty, data});
     }
 
     static adjustDifficulty({originalBlock, timestamp}){
