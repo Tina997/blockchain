@@ -3,6 +3,7 @@ const Block = require("./server/blockchain/block");
 const {MINE_RATE} = require("./config");
 const {cryptoHash} = require("./server/util");
 const Blockchain = require("./server/blockchain");
+blockchain = new Blockchain();
 
 module.exports = {
     async insert(data){
@@ -17,7 +18,7 @@ module.exports = {
             lastBlocks.rows[0].difficulty,lastBlocks.rows[0].data);
         let newBlock = Block.mineBlock(lastBlock, data);*/
         console.log("Hola");
-        let newBlock = Blockchain.addBlock(lastBlocks.rows[0],data);
+        let newBlock = blockchain.addBlock(lastBlocks.rows[0],data);
         console.log("Adeu");
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
