@@ -5,14 +5,15 @@ const {cryptoHash} = require("./server/util");
 
 module.exports = {
     async insert(data){
-        let lastBlock = connection.query("select * from block_table order by timestamp desc limit 1");
+        let lastBlocks = await connection.query("select * from block_table order by timestamp desc limit 1");
         /*let lastHash = lastBlock.rows[0].hash;
         let lastDate = new Date(lastBlock.rows[0].timestamp);
         let today = new Date();
         let timestamp = today.toLocaleString();
         let difficulty = (today.valueOf() - lastDate.valueOf()) > MINE_RATE ? lastBlock.rows[0].difficulty - 1: lastBlock.rows[0].difficulty + 1;
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';*/
-        let newBlock = Block.mineBlock(lastBlock.rows[0], data);
+        let lastBlock = lastBlocks.rows[0];
+        let newBlock = Block.mineBlock(lastBlock, data);
         console.log("Hola");
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
