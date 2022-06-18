@@ -5,13 +5,13 @@ const blockchain = require('../../blockchain');
 class Blockchain{
 
     constructor(){
-        //this.chain = [Block.genesis()];
-        this.chain = blockchain.obtainAll();
+        this.chain = [Block.genesis()];
+        //this.chain = blockchain.obtainAll();
     }
 
-    addBlock({ data }){
+    addBlock({ lastBlock, data }){
         const newBlock = Block.mineBlock({
-            lastBlock: blockchain.obtainLastBlock(),
+            lastBlock: lastBlock,
             data
         });
 

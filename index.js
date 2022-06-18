@@ -39,25 +39,24 @@ app.get('/api/blocks', (req, res) =>{
 
 app.post('/api/mine', (req,res) => {
     const{data} = req.body;
-
+    let lastBlock = DatabaseModel.obtainLastBlock();
     if(!data){
         return res.status(500).send("Campo data inválido");
     }
-    blockchain.addBlock(data);
-    /*DatabaseModel
+    DatabaseModel
         .insert(data)
         .then(()=>{
 
             pubsub.broadcastChain();
-        
+            blockchain.addBlock(lastBlock,data);
             res.redirect('/table');
         })
         .catch(err =>{
             return res.status(500).send("Error insertando producto");
-        });*/
+        });
 
     //res.redirect('/api/blocks');
-    res.redirect('/table');
+    //res.redirect('/table');
 });
 
 app.post('/api/transact', (req, res) =>{
