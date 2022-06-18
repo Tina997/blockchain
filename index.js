@@ -39,7 +39,7 @@ app.get('/api/blocks', (req, res) =>{
 
 app.post('/api/mine', (req,res) => {
     const{data} = req.body;
-    let lastBlock = 0
+    let lastBlock = null;
 
     if(!data){
         return res.status(500).send("Campo data inválido");
