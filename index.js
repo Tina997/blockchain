@@ -47,14 +47,15 @@ app.post('/api/mine', (req,res) => {
     DatabaseModel
         .insert(data)
         .then(()=>{
+            blockchain.addBlock({data});
+
+            pubsub.broadcastChain();
+        
             res.redirect('/table');
         })
         .catch(err =>{
             return res.status(500).send("Error insertando producto");
         });
-    //blockchain.addBlock({data});
-
-    pubsub.broadcastChain();
 
     //res.redirect('/api/blocks');
     //res.redirect('/table');
