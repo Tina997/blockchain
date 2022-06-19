@@ -20,7 +20,7 @@ module.exports = {
         console.log(lastBlocks.rows[0].timestamp);
         console.log(lastBlock);*/
         let newBlock = blockchain.addBlock(lastBlock,data);
-        console.log(newBlock);
+        console.log(newBlock.Block);
         let timestamp = newBlock.timestamp.toLocalString();
         console.log(timestamp);
         let lastHash = newBlock.lastHash;

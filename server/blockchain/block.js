@@ -30,7 +30,7 @@ class Block{
         let hash, timestamp, difficulty;
         console.log ("Hola");
         do{
-            timestamp = Date.now();
+            timestamp = new Date().toLocaleString();
             difficulty = Block.adjustDifficulty(lastBlock, timestamp);
             hash = cryptoHash(timestamp, lastHash, data, difficulty);
         }while(hexToBinary(hash).substring(0, difficulty)!=='0'.repeat(difficulty));
