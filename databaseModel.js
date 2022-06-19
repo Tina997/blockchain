@@ -23,11 +23,11 @@ module.exports = {
         console.log(lastBlock);
         let newBlock = blockchain.addBlock(lastBlock,data);
         console.log(newBlock);
-        let timestamp = newBlock.timestamp;
+        let timestamp = newBlock.timestamp.toLocalString();
         let lastHash = newBlock.lastHash;
         let hash = newBlock.hash;
         let difficulty = newBlock.difficulty;
-        //let data = newBlock.data;
+        let data = newBlock.data;
         result = await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
         values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
