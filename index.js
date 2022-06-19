@@ -43,7 +43,6 @@ app.post('/api/mine', (req,res) => {
     if(!data){
         return res.status(500).send("Campo data inválido");
     }
-    console.log("Adios");
     DatabaseModel
         .insert(data)
         .then(()=>{
