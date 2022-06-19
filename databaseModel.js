@@ -29,9 +29,9 @@ module.exports = {
         let hash = newBlock.hash;
         let difficulty = newBlock.difficulty;
         //let data = newBlock.data;
-        result = await connection.query(`insert into block_table
+        /*result = await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
-        values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
+        values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);*/
 
         return result;
     },
