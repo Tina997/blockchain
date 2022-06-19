@@ -19,7 +19,7 @@ module.exports = {
         let newBlock = Block.mineBlock(lastBlock, data);*/
         console.log("Hola");
         console.log(lastBlocks.rows);
-        let newBlock = blockchain.addBlock(lastBlocks.rows,data);
+        let newBlock = blockchain.addBlock(lastBlocks.rows[0].hash,data);
         console.log("Adeu");
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
