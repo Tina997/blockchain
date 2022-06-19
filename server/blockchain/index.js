@@ -10,10 +10,10 @@ class Blockchain{
 
     addBlock({ lastBlock, data }){
         console.log(lastBlock);
-        const newBlock = Block.mineBlock({
+        const newBlock = Block.mineBlock(
             lastBlock,
             data
-        });
+        );
 
         return newBlock;
         //this.chain.push(newBlock);

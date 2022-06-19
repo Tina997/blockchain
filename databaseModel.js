@@ -14,12 +14,12 @@ module.exports = {
         let timestamp = today.toLocaleString();
         let difficulty = (today.valueOf() - lastDate.valueOf()) > MINE_RATE ? lastBlock.rows[0].difficulty - 1: lastBlock.rows[0].difficulty + 1;
         let hash = cryptoHash(timestamp, lastHash, data, difficulty)+ ' ';*/
-        /*const lastBlock = new Block(lastBlocks.rows[0].timestamp,lastBlocks.rows[0].lastHash,lastBlocks.rows[0].hash,
+        const lastBlock = new Block(lastBlocks.rows[0].timestamp,lastBlocks.rows[0].lastHash,lastBlocks.rows[0].hash,
             lastBlocks.rows[0].difficulty,lastBlocks.rows[0].data);
-        let newBlock = Block.mineBlock(lastBlock, data);*/
+        //let newBlock = Block.mineBlock(lastBlock, data);
         console.log("Hola");
         console.log(lastBlocks.rows[0].timestamp);
-        let lastBlock = new Block(lastBlocks.rows[0]);
+        //let lastBlock = new Block(lastBlocks.rows[0]);
         console.log(lastBlock);
         let newBlock = blockchain.addBlock(lastBlock.Block,data);
         console.log("Adeu");

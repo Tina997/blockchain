@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 
 class Block{
-    constructor({timestamp, lastHash, hash, difficulty, data}){
+    constructor(timestamp, lastHash, hash, difficulty, data){
         this.timestamp = timestamp;
         this.lastHash = lastHash;
         this.hash = hash;
@@ -23,7 +23,7 @@ class Block{
         return new Block(GENESIS_DATA); 
     }
 
-    static mineBlock({lastBlock, data}){
+    static mineBlock(lastBlock, data){
         console.log("Hi");
         //console.log(lastBlock.hash);
         let lastHash = lastBlock.hash;
@@ -31,14 +31,14 @@ class Block{
         console.log ("Hola");
         do{
             timestamp = Date.now();
-            difficulty = Block.adjustDifficulty({originalBlock: lastBlock, timestamp});
+            difficulty = Block.adjustDifficulty(lastBlock, timestamp);
             hash = cryptoHash(timestamp, lastHash, data, difficulty);
         }while(hexToBinary(hash).substring(0, difficulty)!=='0'.repeat(difficulty));
 
         return new this({timestamp, lastHash, hash, difficulty, data});
     }
 
-    static adjustDifficulty({originalBlock, timestamp}){
+    static adjustDifficulty(originalBlock, timestamp){
         const{ difficulty } = originalBlock;
 
         if(difficulty < 1) return 1; 
