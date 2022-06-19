@@ -1,6 +1,5 @@
 const Block = require('./block');
 const {cryptoHash} = require('../util');
-const blockchain = require('../../databaseModel');
 
 class Blockchain{
 
