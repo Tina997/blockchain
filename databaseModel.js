@@ -21,7 +21,7 @@ module.exports = {
         console.log(lastBlocks.rows[0].timestamp);
         let lastBlock = new Block(lastBlocks.rows[0].timestamp, lastBlocks.rows[0].lastHash,lastBlocks.rows[0].hash,lastBlocks.rows[0].difficulty,lastBlocks.rows[0].data);
         console.log(lastBlock);
-        let newBlock = blockchain.addBlock(lastBlock,data);
+        let newBlock = blockchain.addBlock(lastBlocks.rows[0].timestamp,data);
         console.log("Adeu");
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
