@@ -10,7 +10,7 @@ class DatabaseModel{
 
     }
     
-    insert(newBlock){
+     insert(newBlock){
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
         let hash = newBlock.hash;
@@ -21,13 +21,14 @@ class DatabaseModel{
         values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
 
         return result;
-    }
-    obtainLastBlock(){
+    };
+
+     obtainLastBlock(){
         let lastBlocks = connection.query("select * from block_table order by timestamp desc limit 1");
         const lastBlock = new Block(lastBlocks.rows[0].timestamp,lastBlocks.rows[0].lastHash,lastBlocks.rows[0].hash,
             lastBlocks.rows[0].difficulty,lastBlocks.rows[0].data);
         return lastBlock;
-    }
+    };
 }
 module.exports = DatabaseModel;
 module.exports = {
