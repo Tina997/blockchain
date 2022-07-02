@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
-    const template = databaseModel.obtainAll();
+    const template = DatabaseModel.obtainAll();
     res.json((await template).rows);
 })
 
