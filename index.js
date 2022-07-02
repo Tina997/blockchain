@@ -55,7 +55,7 @@ app.post('/api/mine', (req,res) => {
             return res.status(500).send("Error insertando producto");
         });*/
         const templates = DatabaseModel.obtainLastBlock();
-        let lastBlock = (await templates).rows;
+        let lastBlock = res.json((await templates).rows);
         let newBlock = blockchain.addBlock(lastBlock,data);
         DatabaseModel
         .insert(newBlock)
