@@ -11,11 +11,7 @@ class Blockchain{
     }
 
     addBlock(data){
-        /*let dato = databaseModel.obtainLastBlock
-        databaseModel.obtainLastBlock().data;*/
-        const template = DatabaseModel.obtainLastBlock();
-        //let hola = json(DatabaseModel.obtainAll());
-        //console.log(json((await template).rows));
+        let template = DatabaseModel.obtainLastBlock();
         console.log(template.data);
         const newBlock = Block.mineBlock(
             lastBlock,
