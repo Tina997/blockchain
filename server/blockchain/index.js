@@ -12,6 +12,7 @@ class Blockchain{
 
     addBlock(data){
         lastBlock = databaseModel.obtainLastBlock();
+        console.log(lastBlock);
         const newBlock = Block.mineBlock(
             lastBlock,
             data
