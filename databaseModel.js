@@ -6,12 +6,12 @@ const Blockchain = require("./server/blockchain");
 const blockchain = new Blockchain();
 
 class DatabaseModel{
-    
+
     constructor(){
 
     }
 
-    insert(newBlock){
+    static insert(newBlock){
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
         let hash = newBlock.hash;
@@ -23,13 +23,13 @@ class DatabaseModel{
 
         return result;
     }
-    obtainLastBlock(){
+    static obtainLastBlock(){
         let lastBlocks = connection.query("select * from block_table order by timestamp desc limit 1");
         const lastBlock = new Block(lastBlocks.rows[0].timestamp,lastBlocks.rows[0].lastHash,lastBlocks.rows[0].hash,
             lastBlocks.rows[0].difficulty,lastBlocks.rows[0].data);
         return lastBlock;
     }
-    obtainAll(){
+    static obtainAll(){
         const results =  connection.query("SELECT * FROM block_table");
         return results;
     }

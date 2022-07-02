@@ -18,7 +18,7 @@ class Blockchain{
             lastBlock,
             data
         );
-        let result = databaseModel.insert(newBlock);
+        let result = DatabaseModel.insert(newBlock);
 
         return result;
         //this.chain.push(newBlock);
