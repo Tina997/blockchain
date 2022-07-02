@@ -2,6 +2,7 @@ const Block = require('./block');
 const {cryptoHash} = require('../util');
 const DatabaseModel = require('../../databaseModel');
 const { json } = require('body-parser');
+const res = require('express/lib/response');
 class Blockchain{
 
     constructor(){
@@ -15,8 +16,9 @@ class Blockchain{
         /*let dato = databaseModel.obtainLastBlock
         databaseModel.obtainLastBlock().data;*/
         const template = DatabaseModel.obtainAll();
+        res.json((await template).rows);
         //let hola = json(DatabaseModel.obtainAll());
-        console.log(json((await template).rows));
+        //console.log(json((await template).rows));
         const newBlock = Block.mineBlock(
             lastBlock,
             data
