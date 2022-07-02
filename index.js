@@ -24,18 +24,19 @@ const transactionPool = new TransactionPool();
 const wallet = new Wallet();
 const pubsub = new PubSub({blockchain, transactionPool, redisUrl: REDIS_URL});
 const transactionMiner = new TransactionMiner({blockchain, transactionPool, wallet, pubsub});
+const databaseModel = new DatabaseModel();
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
-    const template = DatabaseModel.obtainAll();
+    const template = databaseModel.obtainAll();
     res.json((await template).rows);
 })
 
-app.get('/api/blocks', (req, res) =>{
+/*app.get('/api/blocks', (req, res) =>{
     res.json(blockchain.chain);
-});
+});*/
 
 app.post('/api/mine', (req,res) => {
     const{data} = req.body;
@@ -63,7 +64,7 @@ app.post('/api/mine', (req,res) => {
         
 });
 
-app.post('/api/transact', (req, res) =>{
+/*app.post('/api/transact', (req, res) =>{
     const {amount, recipient} = req.body;
 
     let transaction = transactionPool
@@ -91,15 +92,15 @@ app.post('/api/transact', (req, res) =>{
     res.json({type: 'success', transaction});
 });
 
-app.get('/api/transaction-pool-map', (req,res) =>{
+/*app.get('/api/transaction-pool-map', (req,res) =>{
     res.json(transactionPool.transactionMap);
 });
 
-app.get('/api/mine-transactions',(req, res) =>{
+/*app.get('/api/mine-transactions',(req, res) =>{
     transactionMiner.mineTransaction();
 
     res.redirect('/api/blocks');
-});
+});*/
 
 /*app.get('/api/wallet-info', (req,res) =>{
     const address = wallet.publicKey;
