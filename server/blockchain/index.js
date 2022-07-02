@@ -7,7 +7,7 @@ class Blockchain{
     constructor(){
         //this.chain = [Block.genesis()];
         const template = databaseModel.obtainAll();
-        this.chain = (await template).rows;
+        this.chain = (await template).rows.JSON;
     }
 
     addBlock(data){
