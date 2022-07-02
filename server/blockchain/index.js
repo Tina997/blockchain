@@ -1,7 +1,7 @@
 const Block = require('./block');
 const {cryptoHash} = require('../util');
 const DatabaseModel = require('../../databaseModel');
-const databaseModel = new DatabaseModel();
+const { json } = require('body-parser');
 class Blockchain{
 
     constructor(){
@@ -12,8 +12,10 @@ class Blockchain{
     }
 
     addBlock(data){
-        let dato = databaseModel.obtainLastBlock().data;
-        console.log(dato);
+        /*let dato = databaseModel.obtainLastBlock
+        databaseModel.obtainLastBlock().data;*/
+        let hola = json(DatabaseModel.obtainAll());
+        console.log(hola);
         const newBlock = Block.mineBlock(
             lastBlock,
             data
