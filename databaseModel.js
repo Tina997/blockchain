@@ -31,8 +31,8 @@ class DatabaseModel{
 }
 module.exports = DatabaseModel;
 module.exports = {
-    async insert(newBlock){
-        /*let lastBlocks = await connection.query("select * from block_table order by timestamp desc limit 1");
+    /*async insert(newBlock){
+        let lastBlocks = await connection.query("select * from block_table order by timestamp desc limit 1");
         const lastBlock = new Block(lastBlocks.rows[0].timestamp,lastBlocks.rows[0].lastHash,lastBlocks.rows[0].hash,
             lastBlocks.rows[0].difficulty,lastBlocks.rows[0].data);
         let newBlock = blockchain.addBlock(lastBlock,data);*/
