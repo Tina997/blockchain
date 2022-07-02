@@ -7,7 +7,7 @@ const blockchain = new Blockchain();
 
 class DatabaseModel{
     constructor(){
-        
+
     }
     insert(newBlock){
         let timestamp = newBlock.timestamp;
@@ -32,6 +32,7 @@ class DatabaseModel{
         return results;
     }
 }
+module.exports = DatabaseModel;
 /*module.exports = {
     async insert(newBlock){
         /*let lastBlocks = await connection.query("select * from block_table order by timestamp desc limit 1");

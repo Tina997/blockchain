@@ -1,12 +1,12 @@
 const Block = require('./block');
 const {cryptoHash} = require('../util');
-const DatabaseModel = require('../../databaseModel');
+const databaseModel = require('../../databaseModel');
 
 class Blockchain{
 
     constructor(){
         //this.chain = [Block.genesis()];
-        const databaseModel = new DatabaseModel();
+        //const databaseModel = new DatabaseModel();
         const template = databaseModel.obtainAll();
         this.chain = template.rows;
     }
