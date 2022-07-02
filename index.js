@@ -43,7 +43,7 @@ app.post('/api/mine', (req,res) => {
     if(!data){
         return res.status(500).send("Campo data inválido");
     }
-    DatabaseModel
+    /*DatabaseModel
         .insert(data)
         .then(()=>{
 
@@ -53,10 +53,14 @@ app.post('/api/mine', (req,res) => {
         })
         .catch(err =>{
             return res.status(500).send("Error insertando producto");
-        });
-
-    //res.redirect('/api/blocks');
-    //res.redirect('/table');
+        });*/
+        if(blockchain.addBlock(data)){
+            pubsub.broadcastChain();
+            res.redirect('/table');
+        }else{
+            return res.status(500).send("Error insertando producto");
+        }
+        
 });
 
 app.post('/api/transact', (req, res) =>{
@@ -97,14 +101,14 @@ app.get('/api/mine-transactions',(req, res) =>{
     res.redirect('/api/blocks');
 });
 
-app.get('/api/wallet-info', (req,res) =>{
+/*app.get('/api/wallet-info', (req,res) =>{
     const address = wallet.publicKey;
     
     res.json({
         address: wallet.publicKey,
         balance: Wallet.calculateBalance({chain: blockchain.chain, address: wallet.publicKey})
     });
-});
+});*/
 
 
 app.get('*', (req, res) =>{
