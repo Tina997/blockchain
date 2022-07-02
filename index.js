@@ -18,8 +18,9 @@ process.env.REDIS_URL;
 const DEFAULT_PORT = 3000;
 const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
 
+const template = DatabaseModel.obtainAll();
 const app = express();
-const blockchain = new Blockchain();
+const blockchain = new Blockchain((await template).rows);
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
 const pubsub = new PubSub({blockchain, transactionPool, redisUrl: REDIS_URL});
@@ -30,7 +31,7 @@ app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
     const template = DatabaseModel.obtainAll();
-    console.log((await template).rows);
+    //console.log((await template).rows);
     res.json((await template).rows);
 })
 
@@ -55,7 +56,7 @@ app.post('/api/mine', (req,res) => {
         .catch(err =>{
             return res.status(500).send("Error insertando producto");
         });*/
-        //let newBlock = blockchain.addBlock(lastBlock,data);
+        let newBlock = blockchain.addBlock(data);
         DatabaseModel
         .insert(newBlock)
         .then(()=>{
