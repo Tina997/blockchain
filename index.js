@@ -23,8 +23,7 @@ const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
 const pubsub = new PubSub({blockchain, transactionPool, redisUrl: REDIS_URL});
-const transactionMiner = new TransactionMiner({blockchain, transactionPool, wallet, pubsub});
-const databaseModel = new DatabaseModel();
+//const transactionMiner = new TransactionMiner({blockchain, transactionPool, wallet, pubsub});
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
