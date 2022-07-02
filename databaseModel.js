@@ -6,9 +6,11 @@ const Blockchain = require("./server/blockchain");
 const blockchain = new Blockchain();
 
 class DatabaseModel{
+    
     constructor(){
 
     }
+
     insert(newBlock){
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
