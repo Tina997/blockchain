@@ -3,14 +3,12 @@ const {cryptoHash} = require('../util');
 
 class Blockchain{
 
-    constructor(Blockchain){
-        //this.chain = [Block.genesis()];
+    constructor(){
+        this.chain = [Block.genesis()];
         //this.chain = blockchain.obtainAll();
-        this.chain = Blockchain;
     }
 
-    addBlock(data ){
-        this.lastBlock = this.chain[this.chain.length-1];
+    addBlock( lastBlock, data ){
         console.log(lastBlock);
         const newBlock = Block.mineBlock(
             lastBlock,
