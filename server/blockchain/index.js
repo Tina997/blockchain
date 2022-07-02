@@ -13,13 +13,13 @@ class Blockchain{
     }
 
     addBlock(data){
-        const lastBlock = obtainLastBlock;
+        const lastBlock = await (obtainLastBlock);
         console.log(lastBlock);
         const newBlock = Block.mineBlock(
             lastBlock,
             data
         );
-        let result = insert(newBlock);
+        let result = await (insert(newBlock));
 
         return result;
         //this.chain.push(newBlock);
