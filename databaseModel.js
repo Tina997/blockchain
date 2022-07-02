@@ -5,7 +5,7 @@ const {cryptoHash} = require("./server/util");
 const Blockchain = require("./server/blockchain");
 const blockchain = new Blockchain();
 
-class DatabaseModel{
+/*class DatabaseModel{
     constructor(){
 
     }
@@ -33,14 +33,14 @@ class DatabaseModel{
         return results;
     }
 }
-module.exports = DatabaseModel;
-/*module.exports = {
+module.exports = DatabaseModel;*/
+module.exports = {
     async insert(newBlock){
         /*let lastBlocks = await connection.query("select * from block_table order by timestamp desc limit 1");
         const lastBlock = new Block(lastBlocks.rows[0].timestamp,lastBlocks.rows[0].lastHash,lastBlocks.rows[0].hash,
             lastBlocks.rows[0].difficulty,lastBlocks.rows[0].data);
         let newBlock = blockchain.addBlock(lastBlock,data);*/
-       /* let timestamp = newBlock.timestamp;
+        let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
         let hash = newBlock.hash;
         let difficulty = newBlock.difficulty;
@@ -61,4 +61,4 @@ module.exports = DatabaseModel;
         const results = await connection.query("SELECT * FROM block_table");
         return results;
     },
-}*/
+}
