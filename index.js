@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
     const template = DatabaseModel.obtainAll();
+    console.log((await template).rows);
     res.json((await template).rows);
 })
 
@@ -54,9 +55,7 @@ app.post('/api/mine', (req,res) => {
         .catch(err =>{
             return res.status(500).send("Error insertando producto");
         });*/
-        const templates = DatabaseModel.obtainLastBlock();
-        let lastBlock = res.json((await templates).rows);
-        let newBlock = blockchain.addBlock(lastBlock,data);
+        //let newBlock = blockchain.addBlock(lastBlock,data);
         DatabaseModel
         .insert(newBlock)
         .then(()=>{
