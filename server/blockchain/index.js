@@ -7,8 +7,8 @@ class Blockchain{
     constructor(){
         //this.chain = [Block.genesis()];
         //const databaseModel = new DatabaseModel;
-        const template = DatabaseModel.obtainAll();
-        this.chain = template.rows;
+        //const template = DatabaseModel.obtainAll();
+        //this.chain = template.rows;
     }
 
     addBlock(data){
