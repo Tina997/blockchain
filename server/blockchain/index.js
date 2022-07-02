@@ -1,25 +1,21 @@
 const Block = require('./block');
 const {cryptoHash} = require('../util');
-const DatabaseModel = require('../../databaseModel');
+
 class Blockchain{
 
     constructor(){
-        //this.chain = [Block.genesis()];
-        //const databaseModel = new DatabaseModel;
-        //const template = DatabaseModel.obtainAll();
-        //this.chain = template.rows;
+        this.chain = [Block.genesis()];
+        //this.chain = blockchain.obtainAll();
     }
 
-    addBlock(data){
-        let template = DatabaseModel.obtainLastBlock();
-        console.log(template.data);
+    addBlock( lastBlock, data ){
+        console.log(lastBlock);
         const newBlock = Block.mineBlock(
             lastBlock,
             data
         );
-        let result = insert(newBlock);
 
-        return result;
+        return newBlock;
         //this.chain.push(newBlock);
     }
 

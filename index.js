@@ -23,7 +23,7 @@ const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
 const pubsub = new PubSub({blockchain, transactionPool, redisUrl: REDIS_URL});
-//const transactionMiner = new TransactionMiner({blockchain, transactionPool, wallet, pubsub});
+const transactionMiner = new TransactionMiner({blockchain, transactionPool, wallet, pubsub});
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
@@ -33,9 +33,9 @@ app.get("/table", async (req,res) => {
     res.json((await template).rows);
 })
 
-/*app.get('/api/blocks', (req, res) =>{
+app.get('/api/blocks', (req, res) =>{
     res.json(blockchain.chain);
-});*/
+});
 
 app.post('/api/mine', (req,res) => {
     const{data} = req.body;
@@ -54,16 +54,23 @@ app.post('/api/mine', (req,res) => {
         .catch(err =>{
             return res.status(500).send("Error insertando producto");
         });*/
-        if(blockchain.addBlock(data)){
+        const templates = DatabaseModel.obtainLastBlock();
+        let lastBlock = (await templates).rows;
+        let newBlock = blockchain.addBlock(lastBlock,data);
+        DatabaseModel
+        .insert(newBlock)
+        .then(()=>{
+
             pubsub.broadcastChain();
+            
             res.redirect('/table');
-        }else{
+        })
+        .catch(err =>{
             return res.status(500).send("Error insertando producto");
-        }
-        
+        })
 });
 
-/*app.post('/api/transact', (req, res) =>{
+app.post('/api/transact', (req, res) =>{
     const {amount, recipient} = req.body;
 
     let transaction = transactionPool
@@ -91,15 +98,15 @@ app.post('/api/mine', (req,res) => {
     res.json({type: 'success', transaction});
 });
 
-/*app.get('/api/transaction-pool-map', (req,res) =>{
+app.get('/api/transaction-pool-map', (req,res) =>{
     res.json(transactionPool.transactionMap);
 });
 
-/*app.get('/api/mine-transactions',(req, res) =>{
+app.get('/api/mine-transactions',(req, res) =>{
     transactionMiner.mineTransaction();
 
     res.redirect('/api/blocks');
-});*/
+});
 
 /*app.get('/api/wallet-info', (req,res) =>{
     const address = wallet.publicKey;
