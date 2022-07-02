@@ -1,7 +1,7 @@
 const Block = require('./block');
 const {cryptoHash} = require('../util');
 const DatabaseModel = require('../../databaseModel');
-const databaseModel = new DatabaseModel;
+const databaseModel = new DatabaseModel();
 class Blockchain{
 
     constructor(){
