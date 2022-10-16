@@ -56,7 +56,7 @@ app.post('/api/mine', (req,res) => {
         });
 });
 
-/* app.post('/api/transact', (req, res) =>{
+app.post('/api/transact', (req, res) =>{
     const {amount, recipient} = req.body;
 
     let transaction = transactionPool
@@ -82,17 +82,17 @@ app.post('/api/mine', (req,res) => {
     pubsub.broadcastTransaction(transaction);
 
     res.json({type: 'success', transaction});
-}); */
+});
 
-/* app.get('/api/transaction-pool-map', (req,res) =>{
+app.get('/api/transaction-pool-map', (req,res) =>{
     res.json(transactionPool.transactionMap);
-}); */
+});
 
-/* app.get('/api/mine-transactions',(req, res) =>{
+app.get('/api/mine-transactions',(req, res) =>{
     transactionMiner.mineTransaction();
 
     res.redirect('/api/blocks');
-}); */
+});
 
 /*app.get('/api/wallet-info', (req,res) =>{
     const address = wallet.publicKey;
