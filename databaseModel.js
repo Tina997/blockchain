@@ -22,6 +22,7 @@ module.exports = {
         values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
 
         return result;*/
+        return true;
     },
     async obtainAll(){
         const results = await connection.query("SELECT * FROM block_table order by timestamp desc");
