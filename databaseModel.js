@@ -47,7 +47,6 @@ module.exports = {
     let hash = newBlock.hash;
     let difficulty = newBlock.difficulty;
     let data = newBlock.data;
-    console.log(newBlock);
     try {
       result = connection.query(`insert into block_table
       (timestamp, lastHash, hash, difficulty, data)

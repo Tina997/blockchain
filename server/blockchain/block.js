@@ -20,7 +20,12 @@ class Block{
 
 
     static genesis(){
-        return new Block(GENESIS_DATA); 
+        return new Block(
+        timestamp = '05/05/2021, 1:53:20 PM',
+        lastHash = '-----',
+        hash = 'hash-one',
+        data = '',
+        difficulty = INITIAL_DIFFICULTY); 
     }
 
     static mineBlock(lastBlock, data){
