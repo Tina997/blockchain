@@ -29,9 +29,9 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
-    /*const template = DatabaseModel.obtainAll();
-    res.json((await template).rows);*/
-    res.json(blockchain.chain);
+    const template = DatabaseModel.obtainAll();
+    res.json((await template).rows);
+    //res.json(blockchain.chain);
 })
 
 app.get('/api/blocks', (req, res) =>{
