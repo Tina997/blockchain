@@ -7,7 +7,7 @@ const blockchain = new Blockchain();
 
 module.exports = {
   async insert(data) {
-    this.getLast().then(async (lastBlock) => {
+    this.getLast().then((lastBlock) => {
       let newBlock = blockchain.addBlock(lastBlock, data);
       console.log(newBlock);
       let timestamp = newBlock.timestamp;
@@ -15,7 +15,7 @@ module.exports = {
       let hash = newBlock.hash;
       let difficulty = newBlock.difficulty;
       try {
-        result = await connection.query(`insert into block_table
+        result = connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
         values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
         return result;

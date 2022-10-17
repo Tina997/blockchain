@@ -22,10 +22,10 @@ class Blockchain{
         return newBlock;
     }
 
-    obtainAll(){
+    async obtainAll(){
         try{
             const chain = databaseModel.obtainAll();
-            return chain;
+            return (await chain).rows;
         }catch(error){
             console.log("Error", error);
         }
