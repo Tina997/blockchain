@@ -1,11 +1,14 @@
 const Block = require('./block');
 const {cryptoHash} = require('../util');
+const { obtainAll } = require('../../databaseModel');
+const databaseModel = require('../../databaseModel');
 
 class Blockchain{
 
     constructor(){
-        this.chain = [Block.genesis()];
+        //this.chain = [Block.genesis()];
         //this.chain = blockchain.obtainAll();
+        this.chain = obtainAll();
     }
 
     addBlock( lastBlock, data ){
@@ -14,9 +17,18 @@ class Blockchain{
             data
         );
 
-        this.chain.push(newBlock);
-        console.log(this.chain);
+       /* this.chain.push(newBlock);
+        console.log(this.chain);*/
         return newBlock;
+    }
+
+    obtainAll(){
+        try{
+            const chain = databaseModel.obtainAll();
+            return chain;
+        }catch(error){
+            console.log("Error", error);
+        }
     }
 
     replaceChain(chain, onSuccess){
