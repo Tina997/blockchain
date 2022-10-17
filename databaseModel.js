@@ -12,16 +12,16 @@ module.exports = {
             lastBlocks.rows[0].difficulty, lastBlocks.rows[0].data);
         let newBlock = blockchain.addBlock(lastBlock, data);
         console.log(newBlock);
-        
+
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
         let hash = newBlock.hash;
-        let difficulty = newBlock.difficulty;
+        /*let difficulty = newBlock.difficulty;
         result = await connection.query(`insert into block_table
         (timestamp, lastHash, hash, difficulty, data)
         values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
 
-        return result;
+        return result;*/
     },
     async obtainAll(){
         const results = await connection.query("SELECT * FROM block_table order by timestamp desc");
