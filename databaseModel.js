@@ -12,6 +12,7 @@ module.exports = {
             lastBlocks.rows[0].difficulty, lastBlocks.rows[0].data);
         let newBlock = blockchain.addBlock(lastBlock, data);
         console.log(newBlock);
+        
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
         let hash = newBlock.hash;
