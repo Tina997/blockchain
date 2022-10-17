@@ -10,7 +10,8 @@ module.exports = {
         let lastBlocks = await connection.query("select * from block_table order by timestamp desc limit 1");
         const lastBlock = new Block(lastBlocks.rows[0].timestamp, 'dummyHash', lastBlocks.rows[0].hash,
             lastBlocks.rows[0].difficulty, lastBlocks.rows[0].data);
-        let newBlock = blockchain.addBlock(lastBlock,data);
+        let newBlock = blockchain.addBlock(lastBlock, data);
+        console.log(newBlock);
         let timestamp = newBlock.timestamp;
         let lastHash = newBlock.lastHash;
         let hash = newBlock.hash;
@@ -22,7 +23,7 @@ module.exports = {
         return result;
     },
     async obtainAll(){
-        const results = await connection.query("SELECT * FROM block_table");
+        const results = await connection.query("SELECT * FROM block_table order by timestamp desc");
         return results;
     },
 }

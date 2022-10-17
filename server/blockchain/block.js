@@ -24,11 +24,8 @@ class Block{
     }
 
     static mineBlock(lastBlock, data){
-        console.log("Hi");
-        //console.log(lastBlock.hash);
         let lastHash = lastBlock.hash;
         let hash, timestamp, difficulty;
-        console.log ("Hola");
         do{
             timestamp = new Date().toLocaleString();
             difficulty = Block.adjustDifficulty(lastBlock, timestamp);

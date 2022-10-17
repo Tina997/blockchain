@@ -9,15 +9,14 @@ class Blockchain{
     }
 
     addBlock( lastBlock, data ){
-        console.log(lastBlock);
-        console.log(data);
         const newBlock = Block.mineBlock(
             lastBlock,
             data
         );
 
+        this.chain.push(newBlock);
+        console.log(this.chain);
         return newBlock;
-        //this.chain.push(newBlock);
     }
 
     replaceChain(chain, onSuccess){
