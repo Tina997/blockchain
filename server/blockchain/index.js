@@ -8,7 +8,7 @@ class Blockchain{
     constructor(){
         //this.chain = [Block.genesis()];
         //this.chain = blockchain.obtainAll();
-        this.chain = obtainAll();
+        this.chain = this.obtainAll();
     }
 
     addBlock( lastBlock, data ){
