@@ -29,8 +29,9 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'client/dist')));
 
 app.get("/table", async (req,res) => {
-    const template = DatabaseModel.obtainAll();
-    res.json((await template).rows);
+    /*const template = DatabaseModel.obtainAll();
+    res.json((await template).rows);*/
+    res.json(blockchain.chain);
 })
 
 app.get('/api/blocks', (req, res) =>{
@@ -39,15 +40,15 @@ app.get('/api/blocks', (req, res) =>{
 
 app.post('/api/mine', (req,res) => {
     const{data} = req.body;
-
     if(!data){
         return res.status(500).send("Campo data inválido");
     }
+    const newBlock = blockchain.addBlock(data);
     DatabaseModel
-        .insert(data)
+        .insert(newBlock)
         .then(()=>{
 
-            //pubsub.broadcastChain();
+            pubsub.broadcastChain();
             
             res.redirect('/table');
         })

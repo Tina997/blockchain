@@ -6,7 +6,7 @@ const Blockchain = require("./server/blockchain");
 const blockchain = new Blockchain();
 
 module.exports = {
-  async insert(data) {
+  /*async insert(data) {
     this.getLast().then((lastBlock) => {
       let newBlock = blockchain.addBlock(lastBlock, data);
       console.log(newBlock);
@@ -37,6 +37,21 @@ module.exports = {
         lastBlocks.rows[0].data
       );
       return lastBlock;
+    } catch (error) {
+      console.log("Error", error);
+    }
+  },*/
+  async insert(newBlock){
+    let timestamp = newBlock.timestamp;
+    let lastHash = newBlock.lastHash;
+    let hash = newBlock.hash;
+    let difficulty = newBlock.difficulty;
+    let data = newBlock.data;
+    try {
+      result = connection.query(`insert into block_table
+      (timestamp, lastHash, hash, difficulty, data)
+      values ($1, $2, $3, $4, $5)`,[timestamp, lastHash, hash, difficulty, data]);
+      return result;
     } catch (error) {
       console.log("Error", error);
     }
