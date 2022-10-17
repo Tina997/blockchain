@@ -6,9 +6,9 @@ const databaseModel = require('../../databaseModel');
 class Blockchain{
 
     constructor(){
-        //this.chain = [Block.genesis()];
+        this.chain = [Block.genesis()];
         //this.chain = blockchain.obtainAll();
-        this.chain = this.obtainAll();
+        //this.chain = this.obtainAll();
     }
 
     addBlock( lastBlock, data ){

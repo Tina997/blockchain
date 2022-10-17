@@ -47,7 +47,7 @@ app.post('/api/mine', (req,res) => {
         .insert(data)
         .then(()=>{
 
-            pubsub.broadcastChain();
+            //pubsub.broadcastChain();
             
             res.redirect('/table');
         })
